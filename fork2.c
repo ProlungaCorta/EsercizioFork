@@ -15,7 +15,6 @@ void sforna_figli(int n) {
     int r;
     for (int i = 0; i < n; i++) { 
         pid_t pid = fork();
-        r = rand() % 6721;
         if (pid == 0) {
             figlio(r);
         } else if (pid > 0) {
