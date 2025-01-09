@@ -5,18 +5,24 @@
 #include <time.h> //sleep()
 
 void figlio(int r) {
-    printf("Figlio numero %d: Il mio numero preferito è: %d\n", getpid(), r);
-    sleep(5);
-    printf("Figlio numero %d: Muoio\n", getpid());
-    exit(0);
+    
 }
 
-void sforna_figli(int n) {
-    int r;
+int main() {
+    srand(time(NULL));
+    int n;
+    printf("Numero di figli da sfornare: ");
+    if (scanf("%d", &n) != 1 || n <= 0) {
+        printf("Input invalido devi creare almeno un figlio.\n");
+        return 1;
+    }
+
     for (int i = 0; i < n; i++) { 
         pid_t pid = fork();
         if (pid == 0) {
-            figlio(r);
+            sleep(1);
+            printf("Figlio numero %d: Muoio\n", getpid());
+            exit(0);
         } else if (pid > 0) {
             printf("Padre: Creato figlio numero: %d\n", pid);
         } else {
@@ -34,18 +40,6 @@ void sforna_figli(int n) {
     }
 
     printf("Padre: Tutti i figli sono morti, li seguo.\n");
-}
-
-int main() {
-    srand(time(NULL));
-    int n;
-    printf("Numero di figli da sfornare: ");
-    if (scanf("%d", &n) != 1 || n <= 0) {
-        printf("Input invalido devi creare almeno un figlio.\n");
-        return 1;
-    }
-
-    sforna_figli(n);
 
     return 0;
 }
