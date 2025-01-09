@@ -19,7 +19,7 @@ void sforna_figli(int n) {
         if (pid == 0) {
             figlio(r);
         } else if (pid > 0) {
-            printf("Padre: Creato figlio numero: %d\n", pid);
+            printf("Padre [%d]: Creato figlio numero: %d\n",getpid(), pid);
         } else {
             perror("Fork fallita");
             exit(1);

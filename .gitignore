@@ -3,6 +3,7 @@
     *.user
     *.aps
     *.pch
+    *.vscode
     *.vspscc
     *.vssscc
     *_i.c

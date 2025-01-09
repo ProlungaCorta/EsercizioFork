@@ -10,16 +10,24 @@ int main() {
         if (pid == 0) {
             printf("sono il figlio %d\n", getpid());
             sleep(1);
+            exit(0);
         } else if (pid > 0) {
-            printf("Padre: Creato figlio numero: %d\n", pid);
+            printf("Padre [%d]: Creato figlio numero: %d\n", getpid(), pid);
         } else {
             perror("Fork fallita");
             exit(1);
         }
 
-    int status; 
+// sala di attesa
+    int status;
     waitpid(pid, &status, 0);
-    printf("Padre: Figlio numero %d morto con status %d\n", WEXITSTATUS(status));
+
+    printf("Padre: Figlio numero %d morto con status %d\n", pid, WEXITSTATUS(status));
     printf("Padre: Tutti i figli sono morti, li seguo.\n");
+    
+    
+    
+    
+    
     return 0;
 }

@@ -9,7 +9,7 @@ void figlio(int r) {
 }
 
 int main() {
-    srand(time(NULL));
+    
     int n;
     printf("Numero di figli da sfornare: ");
     if (scanf("%d", &n) != 1 || n <= 0) {
@@ -24,7 +24,7 @@ int main() {
             printf("Figlio numero %d: Muoio\n", getpid());
             exit(0);
         } else if (pid > 0) {
-            printf("Padre: Creato figlio numero: %d\n", pid);
+            printf("Padre [%d]: Creato figlio numero: %d\n", getpid(), pid);
         } else {
             perror("Fork fallita");
             exit(1);
